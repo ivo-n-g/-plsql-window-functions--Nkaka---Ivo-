@@ -1,0 +1,12 @@
+SELECT
+    branch_id,
+    employee_id,
+    total_revenue,
+    NTILE(4) OVER (PARTITION BY branch_id ORDER BY total_revenue DESC) AS branch_quartile,
+    CUME_DIST() OVER (PARTITION BY branch_id ORDER BY total_revenue DESC) AS branch_cum_dist
+FROM (
+    SELECT branch_id, employee_id, SUM(amount) AS total_revenue
+    FROM transactions
+    GROUP BY branch_id, employee_id
+) eb
+ORDER BY branch_id, total_revenue DESC;
