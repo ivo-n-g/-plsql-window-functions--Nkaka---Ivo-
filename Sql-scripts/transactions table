@@ -1,0 +1,14 @@
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY,
+    customer_id    INT,
+    employee_id    INT,
+    branch_id      INT,
+    product_id     INT,
+    sale_date      DATE,
+    quantity       INT,
+    amount         NUMBER(10,2),
+    CONSTRAINT fk_txn_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    CONSTRAINT fk_txn_employee FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    CONSTRAINT fk_txn_branch FOREIGN KEY (branch_id) REFERENCES branches(branch_id),
+    CONSTRAINT fk_txn_product FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
