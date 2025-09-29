@@ -266,8 +266,6 @@ Kigali Downtown consistently generated the highest monthly revenue, while Huye u
 
 Sales showed steady growth in Q1–Q2 2024, with a noticeable revenue spike in May.
 
-A small group of customers contributed the majority of total revenue (top quartile customers).
-
 Employee performance was uneven: some processed high-value transactions regularly, while others had minimal sales contribution.
 
 2. Diagnostic – Why?
@@ -275,8 +273,6 @@ Employee performance was uneven: some processed high-value transactions regularl
 Kigali’s central location and higher customer traffic explain its strong performance compared to Huye.
 
 The May revenue spike coincided with promotions and the introduction of new menu items (e.g., croissants, lattes).
-
-Customer segmentation showed that top spenders are repeat buyers, while bottom-quartile customers are mostly occasional visitors.
 
 High-performing employees were scheduled during peak hours or handled bulk orders, while lower performers were often new hires or worked slower shifts.
 
