@@ -1,0 +1,6 @@
+CREATE TABLE products (
+    product_id     INT PRIMARY KEY,
+    product_name   VARCHAR2(100) NOT NULL,
+    category       VARCHAR2(50),
+    unit_price     NUMBER(10,2)
+);
