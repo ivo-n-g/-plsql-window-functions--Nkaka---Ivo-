@@ -1,0 +1,11 @@
+SELECT
+    employee_id,
+    total_revenue,
+    NTILE(4) OVER (ORDER BY total_revenue DESC) AS performance_quartile,
+    CUME_DIST() OVER (ORDER BY total_revenue DESC) AS cumulative_distribution
+FROM (
+    SELECT employee_id, SUM(amount) AS total_revenue
+    FROM transactions
+    GROUP BY employee_id
+) e
+ORDER BY total_revenue DESC;
