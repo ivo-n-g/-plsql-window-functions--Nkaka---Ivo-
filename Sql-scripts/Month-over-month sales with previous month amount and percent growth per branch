@@ -1,0 +1,20 @@
+WITH monthly_branch_sales AS (
+    SELECT
+        branch_id,
+        TO_CHAR(sale_date, 'YYYY-MM') AS sale_month,
+        SUM(amount)         AS monthly_sales,
+        MIN(sale_date)      AS month_first_date
+    FROM transactions
+    GROUP BY branch_id, TO_CHAR(sale_date, 'YYYY-MM')
+)
+SELECT
+    branch_id,
+    sale_month,
+    monthly_sales,
+    LAG(monthly_sales) OVER (PARTITION BY branch_id ORDER BY month_first_date) AS prev_month_sales,
+    ROUND(
+      (monthly_sales - LAG(monthly_sales) OVER (PARTITION BY branch_id ORDER BY month_first_date))
+      / NULLIF(LAG(monthly_sales) OVER (PARTITION BY branch_id ORDER BY month_first_date), 0) * 100
+    ,2) AS pct_growth_vs_prev_month
+FROM monthly_branch_sales
+ORDER BY branch_id, sale_month;
