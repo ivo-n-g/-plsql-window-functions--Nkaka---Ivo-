@@ -1,0 +1,25 @@
+WITH monthly_branch_sales AS (
+    SELECT
+        branch_id,
+        TO_CHAR(sale_date, 'YYYY-MM') AS sale_month,
+        SUM(amount) AS monthly_sales,
+        MIN(sale_date) AS month_first_date  -- useful for ordering reliably
+    FROM transactions
+    GROUP BY branch_id, TO_CHAR(sale_date, 'YYYY-MM')
+)
+SELECT
+    branch_id,
+    sale_month,
+    monthly_sales,
+    SUM(monthly_sales) OVER (
+        PARTITION BY branch_id
+        ORDER BY month_first_date
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS running_total_sales,
+    AVG(monthly_sales) OVER (
+        PARTITION BY branch_id
+        ORDER BY month_first_date
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS running_avg_sales
+FROM monthly_branch_sales
+ORDER BY branch_id, sale_month;
