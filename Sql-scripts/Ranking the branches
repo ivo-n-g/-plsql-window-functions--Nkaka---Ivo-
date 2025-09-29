@@ -1,0 +1,11 @@
+SELECT *
+FROM (
+    SELECT
+        branch_id,
+        SUM(amount) AS total_revenue,
+        RANK() OVER (ORDER BY SUM(amount) DESC) AS branch_rank
+    FROM transactions
+    GROUP BY branch_id
+) ranked
+WHERE branch_rank <= 3
+ORDER BY branch_rank;
