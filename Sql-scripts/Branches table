@@ -3,3 +3,4 @@ CREATE TABLE branches (
     branch_name    VARCHAR2(100) NOT NULL,
     opening_date   DATE,
     address        VARCHAR2(200)
+);
