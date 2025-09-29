@@ -8,3 +8,5 @@ CREATE TABLE employees (
     phone_number   VARCHAR2(20),
     CONSTRAINT fk_employee_branch FOREIGN KEY (branch_id) REFERENCES branches(branch_id),
     CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
+
