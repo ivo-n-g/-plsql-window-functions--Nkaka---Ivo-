@@ -1,0 +1,8 @@
+CREATE TABLE customers (
+    customer_id    INT PRIMARY KEY,
+    customer_name  VARCHAR2(100) NOT NULL,
+    phone_number   VARCHAR2(20),
+    email          VARCHAR2(100),
+    branch_id       INT
+constraint fk_branch_id foreign key (branch_id) references branches(branch_id)
+);
