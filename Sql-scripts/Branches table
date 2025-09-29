@@ -1,7 +1,5 @@
-'''sh
 CREATE TABLE branches (
     branch_id      INT PRIMARY KEY,
     branch_name    VARCHAR2(100) NOT NULL,
     opening_date   DATE,
     address        VARCHAR2(200)
-'''
