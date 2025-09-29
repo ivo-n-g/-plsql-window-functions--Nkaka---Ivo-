@@ -1,0 +1,13 @@
+SELECT
+    branch_id,
+    total_revenue,
+    ROW_NUMBER()   OVER (ORDER BY total_revenue DESC) AS row_num,
+    RANK()         OVER (ORDER BY total_revenue DESC) AS rank_num,
+    DENSE_RANK()   OVER (ORDER BY total_revenue DESC) AS dense_rank_num,
+    PERCENT_RANK() OVER (ORDER BY total_revenue DESC) AS percent_rank_num
+FROM (
+    SELECT branch_id, SUM(amount) AS total_revenue
+    FROM transactions
+    GROUP BY branch_id
+) b
+ORDER BY total_revenue DESC;
